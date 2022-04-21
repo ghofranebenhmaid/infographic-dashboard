@@ -1,0 +1,98 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Kitty Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+//! breakpoints
+$breakpoints: (
+    xsm: (
+        min: 300px,
+        max: 376px,
+    ),
+    sm: (
+        min: 576px,
+        max: 575.98px,
+    ),
+    md: (
+        min: 768px,
+        max: 767.98px
+    ),
+    lg: (
+        min: 992px,
+        max: 991.98px
+    ),
+    xl: (
+        min: 1200px,
+        max: 1199.98px
+    ),
+    xxl: (
+      min: 1400px,
+      max: 1399.98px,
+    )
+);
+
+@mixin breakpoint($breakpoint, $direction: min) {
+    
+    //check if the supplied breakpoint exists in our breakpoits map
+    @if map-has-key($breakpoints, $breakpoint) { 
+        $breakpoint-values: map-get($breakpoints, $breakpoint);
+        $breakpoint-min: map-get($breakpoint-values, min);
+        $breakpoint-max: map-get($breakpoint-values, max);
+
+        //check if we are writing styles for larger or smaller screens
+        @if $direction == min {
+            @media (min-width: $breakpoint-min) {
+                @content;
+            }
+        }
+
+        @else {
+            @media (max-width: $breakpoint-max) {
+                @content;
+            }
+        }
+    
+    // use the custom value if the breakpoint is not part of the pre-defined list
+    } @else {
+        
+        @if $direction == min {
+            @media (min-width: $breakpoint) {
+                @content;
+            }
+        }
+
+        @else {
+            @media (max-width: $breakpoint) {
+                @content;
+            }
+        }
+    }
+}

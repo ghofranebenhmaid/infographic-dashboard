@@ -1,0 +1,37 @@
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+  color: $brand-color;
+  text-decoration: none;
+
+  @include on-event {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+*:focus {
+  outline: none;
+}
+
+::-moz-selection {
+  background: #5f77e0;
+}
+
+::selection {
+  background: #5f77e0;
+  color: #ffffff;
+}

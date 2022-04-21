@@ -1,4 +1,4 @@
-
+ import './stylesheets/main.scss';
 
 function App ()
 {
