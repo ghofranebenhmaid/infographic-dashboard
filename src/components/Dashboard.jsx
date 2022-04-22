@@ -1,12 +1,12 @@
 import React, { useState } from "react"
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Dashboard = () =>
 {
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
-    const history = useHistory()
+    const navigate = useNavigate();
 
     async function handleLogout ()
     {
@@ -14,7 +14,7 @@ const Dashboard = () =>
 
         try {
             await logout()
-            history.push("/signin")
+            navigate("/signin", { replace: true })
         } catch {
             setError("Failed to log out")
         }
@@ -22,9 +22,9 @@ const Dashboard = () =>
 
     return (
 
-        <div className="home ">
+        <div className="dashboard ">
             <div className="container ">
-                <h2 >Profile</h2>
+                <h2 >dashboard</h2>
                 { error && <div >{ error }</div> }
                 <strong>Email:</strong> { currentUser.email }
                 <div className="">

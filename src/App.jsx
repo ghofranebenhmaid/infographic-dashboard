@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import Dashboard from './components/Dashboard';
 import SignIn from './components/SignIn';
@@ -13,23 +13,30 @@ import { AuthProvider } from "./contexts/AuthContext"
 import './stylesheets/main.scss';
 
 
+
 function App ()
 {
   return (
     <div className='App'>
-      <Router>
-        <AuthProvider>
-          <Switch>
-            <PrivateRoute exact path='/' component={ Dashboard } />
-            <PrivateRoute path="/update-profile" component={ UpdateProfile } />
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+           
+            <Route exact path='/' element={ <PrivateRoute /> }>
+              <Route exact path='/' element={ <Dashboard /> } />
+            </Route>
+            <Route path='/' element={ <PrivateRoute /> }>
+              <Route path='update-profile' element={ <UpdateProfile /> } />
+            </Route> 
 
-            <Route path='/signup' component={ SignUp } />
-            <Route path='/signin' component={ SignIn } />
-            <Route path="/forgot-password" component={ ForgotPassword } />
 
-          </Switch>
-        </AuthProvider>
-      </Router>
+
+            <Route path='signup' element={ <SignUp /> } />
+            <Route path='signin' element={ <SignIn /> } />
+            <Route path="forgot-password" element={ <ForgotPassword /> } />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   )
 }

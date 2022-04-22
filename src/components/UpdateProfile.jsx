@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react"
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function UpdateProfile ()
 {
@@ -10,7 +10,8 @@ export default function UpdateProfile ()
     const { currentUser, updatePassword, updateEmail } = useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
-    const history = useHistory()
+    const navigate = useNavigate();
+
 
     function handleSubmit (e)
     {
@@ -33,7 +34,7 @@ export default function UpdateProfile ()
         Promise.all(promises)
             .then(() =>
             {
-                history.push("/")
+                navigate("/")
             })
             .catch(() =>
             {
