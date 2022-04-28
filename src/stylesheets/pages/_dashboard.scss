@@ -1,0 +1,89 @@
+
+.dashboard {
+	width: 100vw;
+	min-height: 100vh;
+
+	&__container {
+		display: grid;
+		justify-items: stretch;
+		// width: 100vw;
+		min-height: 100vh;
+		background-color: $light-grey;
+		grid-template-areas:
+			'dashboard__sidebar dashboard__section-3 dashboard__section-3'
+			'dashboard__sidebar dashboard__section-1 dashboard__section-2';
+		grid-template-columns: 60px 2fr 1fr;
+		grid-template-rows: 1fr 1fr;
+
+		@include breakpoint(lg, min) {
+
+  }
+		@include breakpoint(md, max) {
+	 padding-bottom: 130px;
+	grid-template-areas:
+			' dashboard__section-3 dashboard__section-3'
+			' dashboard__section-1 dashboard__section-1'
+			' dashboard__section-2 dashboard__section-2'
+			'dashboard__sidebar dashboard__sidebar';
+			grid-template-columns:  1fr ;
+		grid-template-rows: 1fr ;
+		grid-template-rows: 1fr  ;
+
+
+  }
+	}
+
+	&__sidebar {
+		grid-area: dashboard__sidebar;
+		background-color: #fff;
+        box-shadow: rgba(99, 99, 99, 0.6) 0px 2px 8px 0px;
+
+		padding: 25px 30px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-direction: column;
+		@include breakpoint(md, max) {
+		flex-direction: row-reverse;
+         position: fixed;
+		padding: 5px 15px;
+
+			bottom: 0;
+			left: 0;
+			right: 0;
+		.btns{
+			display: flex;
+		flex-direction: row-reverse;
+
+		}
+	
+		}
+
+	}
+		&__logo{
+		@include breakpoint(md, max) {
+
+		display: none;
+		}
+	}
+	
+	&__section-1 {
+		grid-area: dashboard__section-1;
+		padding: 19px;
+	}
+	&__section-2 {
+		grid-area: dashboard__section-2;
+		 padding: 19px;
+	}
+	&__section-3 {
+		grid-area: dashboard__section-3;
+		 padding: 19px;
+
+	}
+}
+canvas {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+}
+

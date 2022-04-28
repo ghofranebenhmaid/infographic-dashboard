@@ -1,18 +1,32 @@
 .btn {
 	background-color: $background ;
 	color: $light-grey;
-	padding: 15px 30px;
+	padding: 15px auto;
 	opacity: 0.9;
 	transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 &_google{
 	color: $mid-grey;
 	border: 1px solid $mid-grey;
+	background-color: $light-grey;
 	border-radius: 50px;
-	padding: 17px 15px;
+	 padding: 12px 15px;
     font-size: 1rem;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
+	gap: 2rem;
+}
+&__icon{
+	color: $background ;
+	 margin:10px auto ;
+	 display: inline-block ;
+	svg{
+		font-size: 1.5rem;
+	}
+	&:hover{
+	color: $mid-grey;
+
+	}
 }
 }
 button {
@@ -21,7 +35,6 @@ button {
 	background: 0;
 	&:hover {
 		opacity: 1;
-		transform: scale(0.98);
 		transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 	}
 }

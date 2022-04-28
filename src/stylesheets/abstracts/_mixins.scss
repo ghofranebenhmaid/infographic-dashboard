@@ -1,6 +1,3 @@
-// -----------------------------------------------------------------------------
-// This file contains all application-wide Sass mixins.
-// -----------------------------------------------------------------------------
 
 /// Event wrapper
 /// @author Harry Roberts
@@ -46,7 +43,7 @@ $breakpoints: (
         max: 767.98px
     ),
     lg: (
-        min: 992px,
+        min: 767.99px,
         max: 991.98px
     ),
     xl: (
