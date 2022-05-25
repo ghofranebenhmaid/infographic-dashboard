@@ -43,10 +43,11 @@
 		justify-content: space-between;
 		align-items: center;
 		flex-direction: column;
+
 		@include breakpoint(md, max) {
 		flex-direction: row-reverse;
          position: fixed;
-		padding: 5px 15px;
+		 padding: 5px 15px;
 
 			bottom: 0;
 			left: 0;
@@ -54,7 +55,7 @@
 		.btns{
 			display: flex;
 		flex-direction: row-reverse;
-
+gap: 1rem;
 		}
 	
 		}
